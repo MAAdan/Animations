@@ -33,14 +33,14 @@
                                             <action selector="actionToggleMenu:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jT0-nG-R3l"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNJ-wv-kYK">
-                                        <rect key="frame" x="145" y="50" width="85" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Simple list" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DNJ-wv-kYK">
+                                        <rect key="frame" x="144.5" y="49" width="87" height="23"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NVg-dc-74G">
-                                        <rect key="frame" x="0.0" y="79" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="80.5" width="375" height="70"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="70" id="mE0-Of-mWe"/>
@@ -59,7 +59,7 @@
                                     <constraint firstItem="NVg-dc-74G" firstAttribute="leading" secondItem="BQZ-An-1jj" secondAttribute="leading" id="f3I-lE-gdw"/>
                                     <constraint firstItem="NVg-dc-74G" firstAttribute="top" secondItem="DNJ-wv-kYK" secondAttribute="bottom" constant="8" id="hpC-xp-3ug"/>
                                     <constraint firstAttribute="height" constant="120" id="pV8-jA-OLE"/>
-                                    <constraint firstItem="DNJ-wv-kYK" firstAttribute="centerY" secondItem="BQZ-An-1jj" secondAttribute="centerY" id="wLk-g6-DOC"/>
+                                    <constraint firstItem="DNJ-wv-kYK" firstAttribute="centerY" secondItem="BQZ-An-1jj" secondAttribute="centerY" identifier="TitleCenterYConstraint" id="wLk-g6-DOC"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLL-Gl-ysW">
