@@ -8,13 +8,10 @@
 
 import UIKit
 
-enum Options {
-    case bear
-    case cat
-    case dog
-    case fox
-    case panda
-    case racoon
+enum Options: Int, EnumSequence {
+    typealias T = Options
+    
+    case bear, cat, dog, fox, panda, racoon
     
     var description: String {
         switch self {
@@ -55,6 +52,11 @@ extension OptionsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OptionCollectionViewCell", for: indexPath) as! OptionCollectionViewCell
+        
+        let options = Options.all()
+        let optionsArray = Array(options)
+        let index = indexPath.row % optionsArray.count
+        cell.customImageView.image = UIImage(named: optionsArray[index].description)
         
         return cell
         

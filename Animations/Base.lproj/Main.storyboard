@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BQZ-An-1jj">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TMs-s2-3lS">
                                         <rect key="frame" x="337" y="6.5" width="30" height="46"/>
@@ -58,11 +58,11 @@
                                     <constraint firstAttribute="trailing" secondItem="NVg-dc-74G" secondAttribute="trailing" id="cXm-op-bU0"/>
                                     <constraint firstItem="NVg-dc-74G" firstAttribute="leading" secondItem="BQZ-An-1jj" secondAttribute="leading" id="f3I-lE-gdw"/>
                                     <constraint firstItem="NVg-dc-74G" firstAttribute="top" secondItem="DNJ-wv-kYK" secondAttribute="bottom" constant="8" id="hpC-xp-3ug"/>
-                                    <constraint firstAttribute="height" constant="200" id="pV8-jA-OLE"/>
+                                    <constraint firstAttribute="height" constant="120" id="pV8-jA-OLE"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QLL-Gl-ysW">
-                                <rect key="frame" x="0.0" y="200" width="375" height="467"/>
+                                <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cd9-2N-yyC">

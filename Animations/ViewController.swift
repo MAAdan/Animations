@@ -15,15 +15,20 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var menuHeightConstraint: NSLayoutConstraint!
     
+    let menuHeightLimits: (small: CGFloat, big: CGFloat) = (small: 60.0, big: 120.0)
+    
     var isMenuOpen = false
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menuHeightConstraint.constant = menuHeightLimits.small
     }
 
     @IBAction func actionToggleMenu(_ sender: UIButton) {
         isMenuOpen = !isMenuOpen
-        menuHeightConstraint.constant = isMenuOpen ? 200.0 : 60.0
+        menuHeightConstraint.constant = isMenuOpen ? menuHeightLimits.big : menuHeightLimits.small
         
         UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseIn, animations: {
             self.view.layoutIfNeeded()
