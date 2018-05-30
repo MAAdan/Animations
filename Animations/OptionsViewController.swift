@@ -15,23 +15,19 @@ enum Options: Int, EnumSequence {
     
     var description: String {
         switch self {
-        case .bear:
-            return "bear"
-        case .cat:
-            return "cat"
-        case .dog:
-            return "dog"
-        case .fox:
-            return "fox"
-        case .panda:
-            return "panda"
-        case .racoon:
-            return "racoon"
+        case .bear: return "bear"
+        case .cat: return "cat"
+        case .dog: return "dog"
+        case .fox: return "fox"
+        case .panda: return "panda"
+        case .racoon: return "racoon"
         }
     }
 }
 
 class OptionsViewController: UIViewController {
+    
+    let options = Array(Options.all())
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -47,16 +43,14 @@ class OptionsViewController: UIViewController {
 extension OptionsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return 100
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "OptionCollectionViewCell", for: indexPath) as! OptionCollectionViewCell
         
-        let options = Options.all()
-        let optionsArray = Array(options)
-        let index = indexPath.row % optionsArray.count
-        cell.customImageView.image = UIImage(named: optionsArray[index].description)
+        let index = indexPath.row % options.count
+        cell.customImageView.image = UIImage(named: options[index].description)
         
         return cell
         
@@ -64,9 +58,5 @@ extension OptionsViewController: UICollectionViewDataSource {
 }
 
 extension OptionsViewController: UICollectionViewDelegate {
-    
-}
-
-extension OptionsViewController: UICollectionViewDelegateFlowLayout {
     
 }

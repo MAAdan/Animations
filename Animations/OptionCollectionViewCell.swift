@@ -12,6 +12,11 @@ class OptionCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var customImageView: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        customImageView.layer.cornerRadius = customImageView.frame.width / 2
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
     }
