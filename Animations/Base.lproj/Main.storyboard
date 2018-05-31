@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -77,7 +76,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPs-t4-A1H">
                                                     <rect key="frame" x="8" y="8" width="80" height="80"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="80" id="CqA-X5-gXH"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="80" id="CqA-X5-gXH"/>
                                                         <constraint firstAttribute="width" constant="80" id="qIH-ve-I8S"/>
                                                     </constraints>
                                                 </imageView>
@@ -90,11 +89,11 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FPs-t4-A1H" secondAttribute="bottom" constant="8" id="1lJ-yw-flK"/>
-                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="aHu-wu-nMv" secondAttribute="bottom" priority="750" constant="8" id="1rU-lf-CaJ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="aHu-wu-nMv" secondAttribute="trailing" constant="16" id="E1H-8B-pwv"/>
+                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="leading" secondItem="FPs-t4-A1H" secondAttribute="trailing" constant="16" id="3ZA-pt-KOX"/>
+                                                <constraint firstAttribute="trailing" secondItem="aHu-wu-nMv" secondAttribute="trailing" constant="31" id="5lS-ZN-EmS"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aHu-wu-nMv" secondAttribute="bottom" priority="750" constant="8" id="DCx-2e-Y2s"/>
                                                 <constraint firstItem="FPs-t4-A1H" firstAttribute="leading" secondItem="0eI-3l-pnH" secondAttribute="leading" constant="8" id="IRW-bX-dXW"/>
-                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="leading" secondItem="FPs-t4-A1H" secondAttribute="trailing" constant="16" id="Pwp-SL-KZe"/>
-                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="centerY" secondItem="FPs-t4-A1H" secondAttribute="centerY" id="ZTT-Ez-GOZ"/>
+                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="centerY" secondItem="FPs-t4-A1H" secondAttribute="centerY" id="eNb-o6-gLh"/>
                                                 <constraint firstItem="FPs-t4-A1H" firstAttribute="top" secondItem="0eI-3l-pnH" secondAttribute="top" constant="8" id="qzj-Ew-a0a"/>
                                             </constraints>
                                         </tableViewCellContentView>

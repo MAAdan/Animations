@@ -28,6 +28,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 96.0
+        
         menuHeightConstraint.constant = menuHeightLimits.min
         optionsContainer.alpha = 0.0
     }
@@ -87,7 +89,7 @@ class ViewController: UIViewController {
 extension ViewController: OptionsDelegate {
     func didSelect(option: Options) {
         selectedOptions.insert(option, at: 0)
-        tableView.reloadData()
+        tableView.insertRows(at: [IndexPath(row:0 , section:0)], with: .fade)
     }
 }
 
