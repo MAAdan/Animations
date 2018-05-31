@@ -16,6 +16,8 @@
 		8BAAE9D520BE65E500875886 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9D420BE65E500875886 /* OptionsViewController.swift */; };
 		8BAAE9D720BE66FC00875886 /* OptionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9D620BE66FC00875886 /* OptionCollectionViewCell.swift */; };
 		8BAAE9D920BE72DF00875886 /* EnumSequenceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9D820BE72DF00875886 /* EnumSequenceProtocol.swift */; };
+		8BAAE9DB20BFB4DE00875886 /* SelectedOptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9DA20BFB4DE00875886 /* SelectedOptionTableViewCell.swift */; };
+		8BAAE9DD20BFB93000875886 /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9DC20BFB93000875886 /* UIView+Constraints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		8BAAE9D420BE65E500875886 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		8BAAE9D620BE66FC00875886 /* OptionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionCollectionViewCell.swift; sourceTree = "<group>"; };
 		8BAAE9D820BE72DF00875886 /* EnumSequenceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnumSequenceProtocol.swift; sourceTree = "<group>"; };
+		8BAAE9DA20BFB4DE00875886 /* SelectedOptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedOptionTableViewCell.swift; sourceTree = "<group>"; };
+		8BAAE9DC20BFB93000875886 /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,8 +94,10 @@
 				8BAAE9B420BE5CFD00875886 /* AppDelegate.swift */,
 				8BAAE9B620BE5CFD00875886 /* ViewController.swift */,
 				8BAAE9D420BE65E500875886 /* OptionsViewController.swift */,
+				8BAAE9DA20BFB4DE00875886 /* SelectedOptionTableViewCell.swift */,
 				8BAAE9D620BE66FC00875886 /* OptionCollectionViewCell.swift */,
 				8BAAE9D820BE72DF00875886 /* EnumSequenceProtocol.swift */,
+				8BAAE9DC20BFB93000875886 /* UIView+Constraints.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -209,7 +215,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BAAE9D520BE65E500875886 /* OptionsViewController.swift in Sources */,
+				8BAAE9DB20BFB4DE00875886 /* SelectedOptionTableViewCell.swift in Sources */,
 				8BAAE9D920BE72DF00875886 /* EnumSequenceProtocol.swift in Sources */,
+				8BAAE9DD20BFB93000875886 /* UIView+Constraints.swift in Sources */,
 				8BAAE9D720BE66FC00875886 /* OptionCollectionViewCell.swift in Sources */,
 				8BAAE9B720BE5CFD00875886 /* ViewController.swift in Sources */,
 				8BAAE9B520BE5CFD00875886 /* AppDelegate.swift in Sources */,

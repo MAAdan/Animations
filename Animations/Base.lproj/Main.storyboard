@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,7 +55,7 @@
                                 <constraints>
                                     <constraint firstItem="TMs-s2-3lS" firstAttribute="centerY" secondItem="DNJ-wv-kYK" secondAttribute="centerY" id="Egl-4x-GMI"/>
                                     <constraint firstItem="DNJ-wv-kYK" firstAttribute="centerX" secondItem="BQZ-An-1jj" secondAttribute="centerX" identifier="TitleCenterXConstraint" id="Lrg-r6-yd4"/>
-                                    <constraint firstAttribute="trailing" secondItem="TMs-s2-3lS" secondAttribute="trailing" constant="16" id="bP3-Sr-Vj5"/>
+                                    <constraint firstAttribute="trailing" secondItem="TMs-s2-3lS" secondAttribute="trailing" constant="16" identifier="DisclosureButtonTrailingConstraint" id="bP3-Sr-Vj5"/>
                                     <constraint firstAttribute="trailing" secondItem="NVg-dc-74G" secondAttribute="trailing" id="cXm-op-bU0"/>
                                     <constraint firstItem="NVg-dc-74G" firstAttribute="leading" secondItem="BQZ-An-1jj" secondAttribute="leading" id="f3I-lE-gdw"/>
                                     <constraint firstItem="NVg-dc-74G" firstAttribute="top" secondItem="DNJ-wv-kYK" secondAttribute="bottom" constant="8" id="hpC-xp-3ug"/>
@@ -66,15 +67,47 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="cd9-2N-yyC">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectedOptionTableViewCell" rowHeight="138" id="cd9-2N-yyC" customClass="SelectedOptionTableViewCell" customModule="Animations" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="138"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cd9-2N-yyC" id="0eI-3l-pnH">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="137.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPs-t4-A1H">
+                                                    <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="80" id="CqA-X5-gXH"/>
+                                                        <constraint firstAttribute="width" constant="80" id="qIH-ve-I8S"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHu-wu-nMv">
+                                                    <rect key="frame" x="104" y="33" width="240" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FPs-t4-A1H" secondAttribute="bottom" constant="8" id="1lJ-yw-flK"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="aHu-wu-nMv" secondAttribute="bottom" priority="750" constant="8" id="1rU-lf-CaJ"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="aHu-wu-nMv" secondAttribute="trailing" constant="16" id="E1H-8B-pwv"/>
+                                                <constraint firstItem="FPs-t4-A1H" firstAttribute="leading" secondItem="0eI-3l-pnH" secondAttribute="leading" constant="8" id="IRW-bX-dXW"/>
+                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="leading" secondItem="FPs-t4-A1H" secondAttribute="trailing" constant="16" id="Pwp-SL-KZe"/>
+                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="centerY" secondItem="FPs-t4-A1H" secondAttribute="centerY" id="ZTT-Ez-GOZ"/>
+                                                <constraint firstItem="FPs-t4-A1H" firstAttribute="top" secondItem="0eI-3l-pnH" secondAttribute="top" constant="8" id="qzj-Ew-a0a"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="customImageView" destination="FPs-t4-A1H" id="fCY-bN-EMb"/>
+                                            <outlet property="customTextLabel" destination="aHu-wu-nMv" id="eTJ-RF-X8i"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="rbV-uS-Z8r"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="9QP-WW-7Qi"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -93,7 +126,7 @@
                         <outlet property="menuButton" destination="TMs-s2-3lS" id="Os5-fS-yxS"/>
                         <outlet property="menuHeightConstraint" destination="pV8-jA-OLE" id="G8z-g7-Rrk"/>
                         <outlet property="optionsContainer" destination="NVg-dc-74G" id="fh5-8t-WK8"/>
-                        <outlet property="tableView" destination="QLL-Gl-ysW" id="E60-1f-oKz"/>
+                        <outlet property="tableView" destination="QLL-Gl-ysW" id="QIu-eX-nBg"/>
                         <outlet property="titleLabel" destination="DNJ-wv-kYK" id="rgs-ed-Vr2"/>
                     </connections>
                 </viewController>

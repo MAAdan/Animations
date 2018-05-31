@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol OptionsDelegate: class {
+    func didSelect(option: Options)
+}
+
 enum Options: Int, EnumSequence {
     typealias T = Options
     
@@ -23,13 +27,26 @@ enum Options: Int, EnumSequence {
         case .racoon: return "racoon"
         }
     }
+    
+    var scientificName: String {
+        switch self {
+        case .bear: return "Ursus horribilis"
+        case .cat: return "Felis catus"
+        case .dog: return "Canis lupus"
+        case .fox: return "Vulpes vulpes"
+        case .panda: return "Ailuropoda melanoleuca"
+        case .racoon: return "Procyon"
+        }
+    }
 }
 
 class OptionsViewController: UIViewController {
     
+    @IBOutlet weak var collectionView: UICollectionView!
+    
     let options = Array(Options.all())
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    weak var optionsDelegate: OptionsDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,5 +75,9 @@ extension OptionsViewController: UICollectionViewDataSource {
 }
 
 extension OptionsViewController: UICollectionViewDelegate {
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let index = indexPath.row % options.count
+        optionsDelegate?.didSelect(option: options[index])
+    }
 }

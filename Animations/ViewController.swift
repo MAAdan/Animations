@@ -23,9 +23,11 @@ class ViewController: UIViewController {
     let titleFontSizeLimits: Limits = (min: 19.0, max: 27.0)
     
     var isMenuOpen = false
+    var selectedOptions = [Options]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
         menuHeightConstraint.constant = menuHeightLimits.min
         optionsContainer.alpha = 0.0
     }
@@ -36,16 +38,14 @@ class ViewController: UIViewController {
         titleLabel.font = isMenuOpen ? UIFont.boldSystemFont(ofSize: titleFontSizeLimits.max) : UIFont.systemFont(ofSize: titleFontSizeLimits.min)
         self.view.layoutIfNeeded()
         
-        let constraints = titleLabel.superview?.constraints.filter{ $0.identifier == "TitleCenterXConstraint" || $0.identifier ==  "TitleCenterYConstraint"}
-        
         // Modifying the constraints by identifier
-        if let titleCenterXConstraint = constraints?.filter({ $0.identifier == "TitleCenterXConstraint"}).first {
-            titleCenterXConstraint.constant = isMenuOpen ? titleXPositionLimits.min : titleXPositionLimits.max
+        if let titleCenterXConstraint = try? titleLabel.superview?.getConstraintWith(id: "TitleCenterXConstraint") {
+            titleCenterXConstraint?.constant = isMenuOpen ? titleXPositionLimits.min : titleXPositionLimits.max
         }
         
         // Animating by replacing the affected constraint
-        if let titleCenterYConstraint = constraints?.filter({ $0.identifier == "TitleCenterYConstraint"}).first {
-            titleCenterYConstraint.isActive = false
+        if let titleCenterYConstraint = try? titleLabel.superview?.getConstraintWith(id: "TitleCenterYConstraint") {
+            titleCenterYConstraint?.isActive = false
             
             let newConstraint = NSLayoutConstraint(
                 item: titleLabel,
@@ -72,12 +72,40 @@ class ViewController: UIViewController {
         }, completion: nil)
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? OptionsViewController {
+            viewController.optionsDelegate = self
+        }
+    }
 }
 
+extension ViewController: OptionsDelegate {
+    func didSelect(option: Options) {
+        selectedOptions.insert(option, at: 0)
+        tableView.reloadData()
+    }
+}
+
+extension ViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return selectedOptions.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SelectedOptionTableViewCell", for: indexPath) as! SelectedOptionTableViewCell
+        
+        let selectedOption = selectedOptions[indexPath.row]
+        let scientificName = selectedOption.scientificName
+        let image = UIImage(named: selectedOption.description)
+        
+        cell.customImageView.image = image
+        cell.customTextLabel.text = scientificName
+        
+        return cell
+    }
+}
