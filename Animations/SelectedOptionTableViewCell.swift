@@ -28,13 +28,13 @@ class SelectedOptionTableViewCell: UITableViewCell {
         super.prepareForReuse()
     }
     
-    func animateAvatar() {
-        customImageViewHeight.constant = 60
-        customImageViewWidth.constant = 60
+    func animateAvatarSize(min: CGFloat, max: CGFloat) {
+        customImageViewHeight.constant = min
+        customImageViewWidth.constant = min
         self.contentView.layoutIfNeeded()
         
-        customImageViewHeight.constant = 80
-        customImageViewWidth.constant = 80
+        customImageViewHeight.constant = max
+        customImageViewWidth.constant = max
         
         UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 10.0, options: [], animations: {
             self.contentView.layoutIfNeeded()

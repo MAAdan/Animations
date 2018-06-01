@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     let menuHeightLimits: Limits = (min: 70.0, max: 200.0)
     let titleXPositionLimits: Limits = (min: -120.0, max: 0.0)
     let titleFontSizeLimits: Limits = (min: 19.0, max: 27.0)
+    let avatarSizeLimits: Limits = (min: 40.0, max: 80.0)
     
     var isMenuOpen = false
     var selectedOptions = [Options]()
@@ -93,7 +94,7 @@ extension ViewController: OptionsDelegate {
         tableView.insertRows(at: [indexPath], with: .fade)
         
         if let cell = tableView.cellForRow(at: indexPath) as? SelectedOptionTableViewCell {
-            cell.animateAvatar()
+            cell.animateAvatarSize(min: avatarSizeLimits.min, max: avatarSizeLimits.max)
         }
     }
 }
