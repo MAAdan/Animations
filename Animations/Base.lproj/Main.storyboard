@@ -73,32 +73,46 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="137.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPs-t4-A1H">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UwJ-1W-eZn" userLabel="View - Image container">
                                                     <rect key="frame" x="8" y="8" width="80" height="80"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FPs-t4-A1H">
+                                                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="80" identifier="CustomImageViewHeightConstraint" id="CqA-X5-gXH"/>
+                                                                <constraint firstAttribute="width" constant="80" identifier="CustomImageViewWidthConstraint" id="qIH-ve-I8S"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="999" constant="80" id="CqA-X5-gXH"/>
-                                                        <constraint firstAttribute="width" constant="80" id="qIH-ve-I8S"/>
+                                                        <constraint firstAttribute="height" priority="999" constant="80" id="5Ra-zf-MXc"/>
+                                                        <constraint firstItem="FPs-t4-A1H" firstAttribute="centerY" secondItem="UwJ-1W-eZn" secondAttribute="centerY" id="Dqo-iN-Wso"/>
+                                                        <constraint firstItem="FPs-t4-A1H" firstAttribute="centerX" secondItem="UwJ-1W-eZn" secondAttribute="centerX" id="M23-li-HaG"/>
+                                                        <constraint firstAttribute="width" constant="80" id="UqF-Gb-P7E"/>
                                                     </constraints>
-                                                </imageView>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHu-wu-nMv">
-                                                    <rect key="frame" x="104" y="33" width="240" height="30"/>
+                                                    <rect key="frame" x="96" y="33" width="248" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="FPs-t4-A1H" secondAttribute="bottom" constant="8" id="1lJ-yw-flK"/>
-                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="leading" secondItem="FPs-t4-A1H" secondAttribute="trailing" constant="16" id="3ZA-pt-KOX"/>
                                                 <constraint firstAttribute="trailing" secondItem="aHu-wu-nMv" secondAttribute="trailing" constant="31" id="5lS-ZN-EmS"/>
+                                                <constraint firstItem="UwJ-1W-eZn" firstAttribute="top" secondItem="0eI-3l-pnH" secondAttribute="top" constant="8" id="Cnl-mn-vGu"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="aHu-wu-nMv" secondAttribute="bottom" priority="750" constant="8" id="DCx-2e-Y2s"/>
-                                                <constraint firstItem="FPs-t4-A1H" firstAttribute="leading" secondItem="0eI-3l-pnH" secondAttribute="leading" constant="8" id="IRW-bX-dXW"/>
-                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="centerY" secondItem="FPs-t4-A1H" secondAttribute="centerY" id="eNb-o6-gLh"/>
-                                                <constraint firstItem="FPs-t4-A1H" firstAttribute="top" secondItem="0eI-3l-pnH" secondAttribute="top" constant="8" id="qzj-Ew-a0a"/>
+                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="leading" secondItem="UwJ-1W-eZn" secondAttribute="trailing" constant="8" id="F5g-wg-wHc"/>
+                                                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="UwJ-1W-eZn" secondAttribute="bottom" constant="8" id="JqR-6F-QkH"/>
+                                                <constraint firstItem="UwJ-1W-eZn" firstAttribute="leading" secondItem="0eI-3l-pnH" secondAttribute="leading" constant="8" id="Nfg-Xe-Vh2"/>
+                                                <constraint firstItem="aHu-wu-nMv" firstAttribute="centerY" secondItem="UwJ-1W-eZn" secondAttribute="centerY" id="c7S-vh-LzN"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="customImageView" destination="FPs-t4-A1H" id="fCY-bN-EMb"/>
+                                            <outlet property="customImageViewHeight" destination="CqA-X5-gXH" id="Uy4-py-7oE"/>
+                                            <outlet property="customImageViewWidth" destination="qIH-ve-I8S" id="u0q-IJ-Oh5"/>
                                             <outlet property="customTextLabel" destination="aHu-wu-nMv" id="eTJ-RF-X8i"/>
                                         </connections>
                                     </tableViewCell>

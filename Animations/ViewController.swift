@@ -89,7 +89,12 @@ class ViewController: UIViewController {
 extension ViewController: OptionsDelegate {
     func didSelect(option: Options) {
         selectedOptions.insert(option, at: 0)
-        tableView.insertRows(at: [IndexPath(row:0 , section:0)], with: .fade)
+        let indexPath = IndexPath(row:0 , section:0)
+        tableView.insertRows(at: [indexPath], with: .fade)
+        
+        if let cell = tableView.cellForRow(at: indexPath) as? SelectedOptionTableViewCell {
+            cell.animateAvatar()
+        }
     }
 }
 
