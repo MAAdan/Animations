@@ -88,6 +88,13 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: OptionsDelegate {
+    func didSelect(imageView: UIImageView?) {
+        if let imageView = imageView {
+            let point = imageView.convert(imageView.bounds.origin, to: view)
+            imageView.shakeIn(point: point, parentView: view, duration: 0.5, withTranslation: 5)
+        }
+    }
+    
     func didSelect(option: Options) {
         selectedOptions.insert(option, at: 0)
         let indexPath = IndexPath(row:0 , section:0)
@@ -124,7 +131,7 @@ extension ViewController: UITableViewDelegate {
         if let cell = tableView.cellForRow(at: indexPath) as? SelectedOptionTableViewCell {
             
             let point = cell.customImageView.convert(cell.customImageView.bounds.origin, to: view)
-            cell.customImageView.animateAvatarImageViewIn(point: point, parentView: self.view)
+            cell.customImageView.animateAvatarImageViewIn(point: point, parentView: self.view, finalScale: 1.35)
         }
     }
 }

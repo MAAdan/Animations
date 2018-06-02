@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B70CB8120C24C3F009061CD /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70CB8020C24C3F009061CD /* UIImageView+Animations.swift */; };
+		8B70CB8320C29482009061CD /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70CB8220C29482009061CD /* UIView+Animations.swift */; };
 		8BAAE9B520BE5CFD00875886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B420BE5CFD00875886 /* AppDelegate.swift */; };
 		8BAAE9B720BE5CFD00875886 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B620BE5CFD00875886 /* ViewController.swift */; };
 		8BAAE9BA20BE5CFD00875886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B820BE5CFD00875886 /* Main.storyboard */; };
@@ -33,6 +34,7 @@
 
 /* Begin PBXFileReference section */
 		8B70CB8020C24C3F009061CD /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
+		8B70CB8220C29482009061CD /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
 		8BAAE9B120BE5CFD00875886 /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAAE9B420BE5CFD00875886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BAAE9B620BE5CFD00875886 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			children = (
 				8BAAE9DC20BFB93000875886 /* UIView+Constraints.swift */,
 				8B70CB8020C24C3F009061CD /* UIImageView+Animations.swift */,
+				8B70CB8220C29482009061CD /* UIView+Animations.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -227,6 +230,7 @@
 			files = (
 				8BAAE9D520BE65E500875886 /* OptionsViewController.swift in Sources */,
 				8B70CB8120C24C3F009061CD /* UIImageView+Animations.swift in Sources */,
+				8B70CB8320C29482009061CD /* UIView+Animations.swift in Sources */,
 				8BAAE9DB20BFB4DE00875886 /* SelectedOptionTableViewCell.swift in Sources */,
 				8BAAE9D920BE72DF00875886 /* EnumSequenceProtocol.swift in Sources */,
 				8BAAE9DD20BFB93000875886 /* UIView+Constraints.swift in Sources */,

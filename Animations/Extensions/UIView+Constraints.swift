@@ -23,4 +23,13 @@ extension UIView {
         
         return constraint
     }
+    
+    func getConstrainWithFirstAttribute(attribute: NSLayoutAttribute) throws -> NSLayoutConstraint? {
+        let foundConstraints = constraints.filter{ $0.firstAttribute == attribute}
+        guard let constraint = foundConstraints.first, foundConstraints.count == 1 else {
+            throw ConstraintsError.moreThanOneConstraintFound
+        }
+        
+        return constraint
+    }
 }

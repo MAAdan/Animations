@@ -10,6 +10,7 @@ import UIKit
 
 protocol OptionsDelegate: class {
     func didSelect(option: Options)
+    func didSelect(imageView: UIImageView?)
 }
 
 enum Options: Int, EnumSequence {
@@ -76,6 +77,10 @@ extension OptionsViewController: UICollectionViewDataSource {
 
 extension OptionsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let selectedItem = collectionView.cellForItem(at: indexPath) as? OptionCollectionViewCell {
+            optionsDelegate?.didSelect(imageView: selectedItem.customImageView)
+        }
         
         let index = indexPath.row % options.count
         optionsDelegate?.didSelect(option: options[index])
