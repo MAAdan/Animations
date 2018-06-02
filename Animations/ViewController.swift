@@ -117,3 +117,14 @@ extension ViewController: UITableViewDataSource {
         return cell
     }
 }
+
+extension ViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath) as? SelectedOptionTableViewCell {
+            
+            let point = cell.customImageView.convert(cell.customImageView.bounds.origin, to: view)
+            cell.customImageView.animateAvatarImageViewIn(point: point, parentView: self.view)
+        }
+    }
+}
