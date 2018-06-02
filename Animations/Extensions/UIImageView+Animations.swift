@@ -63,39 +63,83 @@ extension UIImageView {
         )
         topConstraint.isActive = true
         parentView.layoutIfNeeded()
-        
     }
     
-    func shakeIn(point: CGPoint, parentView: UIView, duration: TimeInterval, withTranslation translation: CGFloat) {
+    private func duplicateImageView(image: UIImage, size: CGFloat) -> UIImageView {
+        let duplicate = UIImageView(image: image)
+        duplicate.layer.cornerRadius = size / 2.0
+        duplicate.clipsToBounds = true
+        duplicate.translatesAutoresizingMaskIntoConstraints = false
+        
+        return duplicate
+    }
+    
+    private func degreesToRadians(x: CGFloat) -> CGFloat {
+        return .pi * x / 180.0
+    }
+    
+    func wobble(point: CGPoint, parentView: UIView, duration: TimeInterval) {
+        guard let image = self.image else {
+            return
+        }
+        let animationRotateDegres: CGFloat = 15.0
+        let animationTranslateX: CGFloat = 0.0
+        let animationTranslateY: CGFloat = 0.0
+        let count = 1
+        
+        let size = self.frame.height
+        let duplicate = duplicateImageView(image: image, size: size)
+        parentView.addSubview(duplicate)
+        isHidden = true
+        
+        place(imageView: duplicate, point: point, parentView: parentView, size: size)
+        
+        let leftOrRight: CGFloat = (count % 2 == 0 ? 1 : -1)
+        let rightOrLeft: CGFloat = (count % 2 == 0 ? -1 : 1)
+        let rightWobble = CGAffineTransform(rotationAngle: degreesToRadians(x: animationRotateDegres * rightOrLeft))
+        let leftWobble = CGAffineTransform(rotationAngle: degreesToRadians(x: animationRotateDegres * leftOrRight))
+        let moveTransform = leftWobble.translatedBy(x: -animationTranslateX, y: -animationTranslateY)
+        let conCatTransform = leftWobble.concatenating(moveTransform)
+        
+        // starting point
+        duplicate.transform = rightWobble
+        
+        UIView.animate(withDuration: duration, delay: 0.08, options: [.autoreverse, .repeat], animations: { () -> Void in
+            UIView.setAnimationRepeatCount(3.0)
+            duplicate.transform = conCatTransform
+            
+        }, completion: {(completed) in
+            self.isHidden = false
+            duplicate.removeFromSuperview()
+        })
+    }
+    
+    func shakeIn(point: CGPoint, parentView: UIView, duration: TimeInterval, translation: CGFloat) {
         
         guard let image = self.image else {
             return
         }
         
         let size = self.frame.height
-        let animatedImage = UIImageView(image: image)
-        animatedImage.layer.cornerRadius = size / 2.0
-        animatedImage.clipsToBounds = true
-        animatedImage.translatesAutoresizingMaskIntoConstraints = false
-        parentView.addSubview(animatedImage)
-        
-        place(imageView: animatedImage, point: point, parentView: parentView, size: size)
+        let duplicate = duplicateImageView(image: image, size: size)
+        parentView.addSubview(duplicate)
+        place(imageView: duplicate, point: point, parentView: parentView, size: size)
         
         let propertyAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 0.25) {
             let random = CGFloat(self.randomCGFloat(min: -1.5, max: 1.5))
             
-            animatedImage.transform = CGAffineTransform(
+            duplicate.transform = CGAffineTransform(
                 translationX: translation * random,
                 y: translation * random
             )
         }
         
         propertyAnimator.addCompletion { (animatingPosition) in
-            animatedImage.removeFromSuperview()
+            duplicate.removeFromSuperview()
         }
         
         propertyAnimator.addAnimations({
-            animatedImage.transform = CGAffineTransform(translationX: 0, y: 0)
+            duplicate.transform = CGAffineTransform(translationX: 0, y: 0)
         }, delayFactor: 0.2)
         
         propertyAnimator.startAnimation()
@@ -108,29 +152,25 @@ extension UIImageView {
         }
         
         let size = self.frame.height
-        let animatedImage = UIImageView(image: image)
-        animatedImage.layer.cornerRadius = size / 2.0
-        animatedImage.clipsToBounds = true
-        animatedImage.translatesAutoresizingMaskIntoConstraints = false
-        parentView.addSubview(animatedImage)
+        let duplicate = duplicateImageView(image: image, size: size)
+        parentView.addSubview(duplicate)
+        place(imageView: duplicate, point: point, parentView: parentView, size: size)
         
-        place(imageView: animatedImage, point: point, parentView: parentView, size: size)
-        
-        if let heightConstraint = try? animatedImage.getConstraintWith(id: "height"), let widthConstraint = try? animatedImage.getConstraintWith(id: "width") {
+        if let heightConstraint = try? duplicate.getConstraintWith(id: "height"), let widthConstraint = try? duplicate.getConstraintWith(id: "width") {
             heightConstraint?.constant = size * finalScale
             widthConstraint?.constant = size * finalScale
             
             UIView.animate(withDuration: 0.35, delay: 0.0, usingSpringWithDamping: 0.6, initialSpringVelocity: 10.0, options: [.autoreverse], animations: {
                 
-                animatedImage.layer.cornerRadius = (size * finalScale) / 2
+                duplicate.layer.cornerRadius = (size * finalScale) / 2
                 parentView.layoutIfNeeded()
             }, completion: { (completed) in
                 if completed {
-                    animatedImage.removeFromSuperview()
+                    duplicate.removeFromSuperview()
                 }
             })
         } else {
-            animatedImage.removeFromSuperview()
+            duplicate.removeFromSuperview()
         }
     }
 }

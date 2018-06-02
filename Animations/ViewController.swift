@@ -12,6 +12,7 @@ typealias Limits = (min: CGFloat, max: CGFloat)
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var navMenuButton: UIBarButtonItem!
     @IBOutlet weak var optionsContainer: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var menuButton: UIButton!
@@ -35,7 +36,7 @@ class ViewController: UIViewController {
         optionsContainer.alpha = 0.0
     }
 
-    @IBAction func actionToggleMenu(_ sender: UIButton) {
+    @IBAction func actionToggleMenu(_ sender: Any) {
         isMenuOpen = !isMenuOpen
         titleLabel.text = isMenuOpen ? "Select item" : "Simple list"
         titleLabel.font = isMenuOpen ? UIFont.boldSystemFont(ofSize: titleFontSizeLimits.max) : UIFont.systemFont(ofSize: titleFontSizeLimits.min)
@@ -70,6 +71,7 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.33, delay: 0.0, options: .curveEaseIn, animations: {
             let angle: CGFloat = self.isMenuOpen ? .pi : 0.0
             self.menuButton.transform = CGAffineTransform(rotationAngle: angle)
+//            self.navMenuButton.transform = CGAffineTransform(rotationAngle: angle)
             self.optionsContainer.alpha = self.isMenuOpen ? 1.0 : 0.0
             self.view.layoutIfNeeded()
         }, completion: nil)
@@ -91,7 +93,7 @@ extension ViewController: OptionsDelegate {
     func didSelect(imageView: UIImageView?) {
         if let imageView = imageView {
             let point = imageView.convert(imageView.bounds.origin, to: view)
-            imageView.shakeIn(point: point, parentView: view, duration: 0.5, withTranslation: 5)
+            imageView.wobble(point: point, parentView: view, duration: 0.2)
         }
     }
     
