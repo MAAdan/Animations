@@ -29,6 +29,17 @@ enum Options: Int, EnumSequence {
         }
     }
     
+    var color: UIColor {
+        switch self {
+        case .bear: return UIColor(red: 238.0/255.0, green: 166.0/255.0, blue: 4.0/255.0, alpha: 1.0)
+        case .cat: return UIColor(red: 214.0/255.0, green: 76.0/255.0, blue: 110.0/255.0, alpha: 1.0)
+        case .dog: return UIColor(red: 59.0/255.0, green: 156.0/255.0, blue: 237.0/255.0, alpha: 1.0)
+        case .fox: return UIColor(red: 38.0/255.0, green: 81.0/255.0, blue: 115.0/255.0, alpha: 1.0)
+        case .panda: return UIColor(red: 89.0/255.0, green: 152.0/255.0, blue: 11.0/255.0, alpha: 1.0)
+        case .racoon: return UIColor(red: 0.0, green: 165.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+        }
+    }
+    
     var scientificName: String {
         switch self {
         case .bear: return "Ursus horribilis"

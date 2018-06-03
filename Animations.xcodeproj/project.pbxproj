@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B34E92020C4867200D9CE44 /* TransitionOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B34E91F20C4867200D9CE44 /* TransitionOverlayView.swift */; };
 		8B70CB8120C24C3F009061CD /* UIImageView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70CB8020C24C3F009061CD /* UIImageView+Animations.swift */; };
 		8B70CB8320C29482009061CD /* UIView+Animations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70CB8220C29482009061CD /* UIView+Animations.swift */; };
+		8B70CB8520C3BB6C009061CD /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70CB8420C3BB6C009061CD /* SecondViewController.swift */; };
+		8B70CB8720C3BE30009061CD /* TransitionAnimatorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B70CB8620C3BE30009061CD /* TransitionAnimatorController.swift */; };
 		8BAAE9B520BE5CFD00875886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B420BE5CFD00875886 /* AppDelegate.swift */; };
-		8BAAE9B720BE5CFD00875886 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B620BE5CFD00875886 /* ViewController.swift */; };
+		8BAAE9B720BE5CFD00875886 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B620BE5CFD00875886 /* FirstViewController.swift */; };
 		8BAAE9BA20BE5CFD00875886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAAE9B820BE5CFD00875886 /* Main.storyboard */; };
 		8BAAE9BC20BE5CFD00875886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BAAE9BB20BE5CFD00875886 /* Assets.xcassets */; };
 		8BAAE9BF20BE5CFD00875886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BAAE9BD20BE5CFD00875886 /* LaunchScreen.storyboard */; };
@@ -33,11 +36,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B34E91F20C4867200D9CE44 /* TransitionOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionOverlayView.swift; sourceTree = "<group>"; };
 		8B70CB8020C24C3F009061CD /* UIImageView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Animations.swift"; sourceTree = "<group>"; };
 		8B70CB8220C29482009061CD /* UIView+Animations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animations.swift"; sourceTree = "<group>"; };
+		8B70CB8420C3BB6C009061CD /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		8B70CB8620C3BE30009061CD /* TransitionAnimatorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitionAnimatorController.swift; sourceTree = "<group>"; };
 		8BAAE9B120BE5CFD00875886 /* Animations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BAAE9B420BE5CFD00875886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8BAAE9B620BE5CFD00875886 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8BAAE9B620BE5CFD00875886 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		8BAAE9B920BE5CFD00875886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8BAAE9BB20BE5CFD00875886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BAAE9BE20BE5CFD00875886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -107,11 +113,14 @@
 				8BAAE9BD20BE5CFD00875886 /* LaunchScreen.storyboard */,
 				8B70CB7F20C24BE6009061CD /* Extensions */,
 				8BAAE9B420BE5CFD00875886 /* AppDelegate.swift */,
-				8BAAE9B620BE5CFD00875886 /* ViewController.swift */,
 				8BAAE9D420BE65E500875886 /* OptionsViewController.swift */,
 				8BAAE9DA20BFB4DE00875886 /* SelectedOptionTableViewCell.swift */,
 				8BAAE9D620BE66FC00875886 /* OptionCollectionViewCell.swift */,
 				8BAAE9D820BE72DF00875886 /* EnumSequenceProtocol.swift */,
+				8BAAE9B620BE5CFD00875886 /* FirstViewController.swift */,
+				8B70CB8420C3BB6C009061CD /* SecondViewController.swift */,
+				8B70CB8620C3BE30009061CD /* TransitionAnimatorController.swift */,
+				8B34E91F20C4867200D9CE44 /* TransitionOverlayView.swift */,
 			);
 			path = Animations;
 			sourceTree = "<group>";
@@ -233,9 +242,12 @@
 				8B70CB8320C29482009061CD /* UIView+Animations.swift in Sources */,
 				8BAAE9DB20BFB4DE00875886 /* SelectedOptionTableViewCell.swift in Sources */,
 				8BAAE9D920BE72DF00875886 /* EnumSequenceProtocol.swift in Sources */,
+				8B70CB8720C3BE30009061CD /* TransitionAnimatorController.swift in Sources */,
+				8B34E92020C4867200D9CE44 /* TransitionOverlayView.swift in Sources */,
 				8BAAE9DD20BFB93000875886 /* UIView+Constraints.swift in Sources */,
 				8BAAE9D720BE66FC00875886 /* OptionCollectionViewCell.swift in Sources */,
-				8BAAE9B720BE5CFD00875886 /* ViewController.swift in Sources */,
+				8BAAE9B720BE5CFD00875886 /* FirstViewController.swift in Sources */,
+				8B70CB8520C3BB6C009061CD /* SecondViewController.swift in Sources */,
 				8BAAE9B520BE5CFD00875886 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

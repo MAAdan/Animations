@@ -17,6 +17,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ads-JY-2Oa">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="vtz-qR-acR"/>
@@ -26,10 +27,10 @@
             </objects>
             <point key="canvasLocation" x="-639" y="134"/>
         </scene>
-        <!--View Controller-->
+        <!--First View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Animations" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="Animations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -166,6 +167,7 @@
                         <outlet property="optionsContainer" destination="NVg-dc-74G" id="fh5-8t-WK8"/>
                         <outlet property="tableView" destination="QLL-Gl-ysW" id="QIu-eX-nBg"/>
                         <outlet property="titleLabel" destination="DNJ-wv-kYK" id="rgs-ed-Vr2"/>
+                        <segue destination="ibs-ra-geJ" kind="show" identifier="SecondViewControllerSegue" id="ILN-oq-QXA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -236,7 +238,61 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="amj-yy-ozK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914.39999999999998" y="-134.93253373313345"/>
+            <point key="canvasLocation" x="930" y="-353"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="k2B-7q-Rqq">
+            <objects>
+                <viewController id="ibs-ra-geJ" customClass="SecondViewController" customModule="Animations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eVF-Fz-CAa">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Qi-gt-yCP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SKc-NJ-Rk2">
+                                        <rect key="frame" x="137" y="25" width="100" height="100"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="100" id="7Mg-fg-051"/>
+                                            <constraint firstAttribute="width" constant="100" id="twO-GK-1Be"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="SKc-NJ-Rk2" firstAttribute="centerX" secondItem="9Qi-gt-yCP" secondAttribute="centerX" id="JPo-PY-uQy"/>
+                                    <constraint firstItem="SKc-NJ-Rk2" firstAttribute="centerY" secondItem="9Qi-gt-yCP" secondAttribute="centerY" id="U3I-tQ-kwx"/>
+                                    <constraint firstAttribute="height" constant="150" id="oNL-i0-ki4"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LKU-PV-cUn">
+                                <rect key="frame" x="0.0" y="150" width="375" height="517"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="9Qi-gt-yCP" firstAttribute="leading" secondItem="GjG-2J-LAw" secondAttribute="leading" id="3GK-IV-XNX"/>
+                            <constraint firstItem="9Qi-gt-yCP" firstAttribute="trailing" secondItem="GjG-2J-LAw" secondAttribute="trailing" id="6c0-zR-vvF"/>
+                            <constraint firstItem="9Qi-gt-yCP" firstAttribute="top" secondItem="eVF-Fz-CAa" secondAttribute="top" id="PED-c9-9T6"/>
+                            <constraint firstItem="LKU-PV-cUn" firstAttribute="trailing" secondItem="GjG-2J-LAw" secondAttribute="trailing" id="R4J-we-zDK"/>
+                            <constraint firstItem="LKU-PV-cUn" firstAttribute="bottom" secondItem="GjG-2J-LAw" secondAttribute="bottom" id="U6y-Or-BAj"/>
+                            <constraint firstItem="LKU-PV-cUn" firstAttribute="leading" secondItem="GjG-2J-LAw" secondAttribute="leading" id="cjn-S5-4Rp"/>
+                            <constraint firstItem="LKU-PV-cUn" firstAttribute="top" secondItem="9Qi-gt-yCP" secondAttribute="bottom" id="jjQ-XU-rRs"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="GjG-2J-LAw"/>
+                    </view>
+                    <connections>
+                        <outlet property="content" destination="LKU-PV-cUn" id="p6F-d9-RhI"/>
+                        <outlet property="header" destination="9Qi-gt-yCP" id="C4u-xD-YkF"/>
+                        <outlet property="headerImageView" destination="SKc-NJ-Rk2" id="SHK-1m-IOu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e3F-LD-eUl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="965.60000000000002" y="133.5832083958021"/>
         </scene>
     </scenes>
     <resources>

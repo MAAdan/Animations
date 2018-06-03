@@ -10,7 +10,7 @@ import UIKit
 
 typealias Limits = (min: CGFloat, max: CGFloat)
 
-class ViewController: UIViewController {
+class FirstViewController: UIViewController {
     
     @IBOutlet weak var optionsContainer: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
             iconButton.addTarget(self, action: #selector(actionToggleMenu), for: .touchUpInside)
             navMenuButton.customView = iconButton
             navMenuButton.customView?.transform = CGAffineTransform(scaleX: 0, y: 0)
-            UIView.animate(withDuration: 1.0, delay: 0.5, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveLinear, animations: {
+            UIView.animate(withDuration: 1.0, delay: 1.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: .curveLinear, animations: {
                 self.navMenuButton.customView?.transform = .identity
             }, completion: nil)
         }
@@ -36,12 +36,17 @@ class ViewController: UIViewController {
     let titleXPositionLimits: Limits = (min: -120.0, max: 0.0)
     let titleFontSizeLimits: Limits = (min: 21.0, max: 27.0)
     let avatarSizeLimits: Limits = (min: 40.0, max: 80.0)
+    let transition = TransitionAnimatorController()
     
-    var isMenuOpen = false
-    var selectedOptions = [Options]()
+    private var isMenuOpen = false
+    private var selectedOptions = [Options]()
+    private var selectedOptionOriginPoint: CGPoint?
+    private var selectedOption: Options?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        transition.transitionAnimatorDataSource = self
+        navigationController?.delegate = self
         titleLabel.font = UIFont.systemFont(ofSize: titleFontSizeLimits.min)
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 96.0
@@ -97,13 +102,20 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let viewController = segue.destination as? SecondViewController, let selectedOption = sender as? Options {
+            viewController.transitioningDelegate = self
+            viewController.selectedOption = selectedOption
+            return
+        }
+        
         if let viewController = segue.destination as? OptionsViewController {
             viewController.optionsDelegate = self
+            return
         }
     }
 }
 
-extension ViewController: OptionsDelegate {
+extension FirstViewController: OptionsDelegate {
     func didSelect(imageView: UIImageView?) {
         if let imageView = imageView {
             let point = imageView.convert(imageView.bounds.origin, to: view)
@@ -122,7 +134,7 @@ extension ViewController: OptionsDelegate {
     }
 }
 
-extension ViewController: UITableViewDataSource {
+extension FirstViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return selectedOptions.count
     }
@@ -141,13 +153,56 @@ extension ViewController: UITableViewDataSource {
     }
 }
 
-extension ViewController: UITableViewDelegate {
+extension FirstViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath) as? SelectedOptionTableViewCell {
-            
-            let point = cell.customImageView.convert(cell.customImageView.bounds.origin, to: view)
-            cell.customImageView.animateAvatarImageViewIn(point: point, parentView: self.view, finalScale: 1.35)
+            selectedOptionOriginPoint = cell.customImageView.convert(cell.customImageView.bounds.origin, to: view)
         }
+        
+        selectedOption = selectedOptions[indexPath.row]
+        self.performSegue(withIdentifier: "SecondViewControllerSegue", sender: selectedOption)
+    }
+}
+
+extension FirstViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationControllerOperation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if operation == .push {
+            return transition
+        }
+        
+        return nil
+    }
+}
+
+extension FirstViewController: UIViewControllerTransitioningDelegate {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return transition
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return nil
+    }
+}
+
+extension FirstViewController: TransitionAnimatorControllerDataSource {
+    func overlayView() -> UIView? {
+        guard let selectedOption = selectedOption else {
+            return nil
+        }
+        
+        let overlayView = TransitionOverlayView(frame: view.frame)
+        overlayView.createOverlayView(selectedOption: selectedOption)
+        
+        return overlayView
+    }
+    
+    func getOriginFrame() -> CGRect {
+        let initialWidth: CGFloat = 250.0
+        let initialHeight: CGFloat = 200.0
+        let originPoint = view.frame.origin
+        let originFrame = CGRect(origin: originPoint, size: CGSize(width: initialWidth, height: initialHeight))
+        return originFrame
     }
 }

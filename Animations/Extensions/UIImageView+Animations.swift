@@ -146,7 +146,7 @@ extension UIImageView {
     }
 
     
-    func animateAvatarImageViewIn(point: CGPoint, parentView: UIView, finalScale: CGFloat) {
+    func animateAvatarImageViewIn(point: CGPoint, parentView: UIView, finalScale: CGFloat, completion: @escaping () -> Void) {
         guard let image = self.image else {
             return
         }
@@ -167,10 +167,12 @@ extension UIImageView {
             }, completion: { (completed) in
                 if completed {
                     duplicate.removeFromSuperview()
+                    completion()
                 }
             })
         } else {
             duplicate.removeFromSuperview()
+            completion()
         }
     }
 }
