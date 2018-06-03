@@ -152,7 +152,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="yal-7B-Frc">
-                        <barButtonItem key="rightBarButtonItem" image="iconmonstr-arrow" id="S8Y-h9-r0a">
+                        <barButtonItem key="rightBarButtonItem" title="+" id="S8Y-h9-r0a">
                             <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
                             <connections>
                                 <action selector="actionToggleMenu:" destination="BYZ-38-t0r" id="Ib0-Ot-P7N"/>
