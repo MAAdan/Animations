@@ -24,7 +24,7 @@ class TransitionAnimatorController: NSObject, UIViewControllerAnimatedTransition
     }
     
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        guard let toView = transitionContext.view(forKey: .to) else {
+        guard let fromView = transitionContext.view(forKey: .from), let toView = transitionContext.view(forKey: .to) else {
             return
         }
         
@@ -32,9 +32,12 @@ class TransitionAnimatorController: NSObject, UIViewControllerAnimatedTransition
         let initialFrame = transitionAnimatorDataSource?.getOriginFrame() ?? CGRect.zero
         let finalFrame = toView.frame
         
-        toView.transform = CGAffineTransform(scaleX: initialFrame.width / finalFrame.width, y: initialFrame.height / finalFrame.height)
+        let initialWidth = initialFrame.width / finalFrame.width
+        let initialHeight = initialFrame.height / finalFrame.height
         
-        toView.center = CGPoint(x: initialFrame.midX, y: initialFrame.midY)
+        toView.transform = CGAffineTransform(scaleX: initialWidth, y: initialHeight)
+        
+        toView.center = CGPoint(x: fromView.frame.width / 2.0, y: fromView.frame.height / 2.0)
         containerView.addSubview(toView)
         
         UIView.animate(withDuration: self.duration, delay: 0.0, usingSpringWithDamping: 0.4, initialSpringVelocity: 0.0, options: [], animations: {

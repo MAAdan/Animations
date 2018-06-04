@@ -199,8 +199,8 @@ extension FirstViewController: TransitionAnimatorControllerDataSource {
     }
     
     func getOriginFrame() -> CGRect {
-        let initialWidth: CGFloat = 250.0
-        let initialHeight: CGFloat = 200.0
+        let initialWidth: CGFloat = view.frame.width * 0.25
+        let initialHeight: CGFloat = view.frame.height * 0.25
         let originPoint = view.frame.origin
         let originFrame = CGRect(origin: originPoint, size: CGSize(width: initialWidth, height: initialHeight))
         return originFrame
