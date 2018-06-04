@@ -22,18 +22,24 @@ class SecondViewController: UIViewController {
             return
         }
         
+        navigationController?.navigationBar.tintColor = .white
+        
         headerImageView.image = UIImage(named: selectedOption.description)
         headerImageView.layer.cornerRadius = headerImageView.frame.height / 2
         header.backgroundColor = selectedOption.color
         content.backgroundColor = selectedOption.color
         content.alpha = 0.25
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        headerImageView.animateAvatarImageViewIn(point: headerImageView.frame.origin, parentView: header, finalScale: 2.0) {
+            
+        }
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-
-    
-
 }
